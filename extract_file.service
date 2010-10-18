@@ -1,0 +1,13 @@
+<service name="extract_file">
+  <summary>Extract files from archive</summary>
+  <description>This service can be used to extract a file from an tar or zip archive. This can be used to used a spec file directly from a tar.</description>
+  <parameter name="archive">
+    <description>Archive to be used</description>
+    <required/>
+  </parameter>
+  <parameter name="files">
+    <description>Files to extract</description>
+    <required/>
+  </parameter>
+</service>
+
