@@ -6,7 +6,7 @@
     <required/>
   </parameter>
   <parameter name="files">
-    <description>Files to extract</description>
+    <description>Files to extract. You may use this parameter multiple times</description>
     <required/>
   </parameter>
 </service>

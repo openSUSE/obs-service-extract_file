@@ -12,7 +12,7 @@ while test $# -gt 0; do
       MYARCHIVE="${2##*/}"
       shift
     ;;
-    *-file)
+    *-file|*-files)
       MYFILES="$MYFILES ${2##*/}"
       shift
     ;;
