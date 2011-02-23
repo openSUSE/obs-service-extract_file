@@ -5,6 +5,7 @@
 # defaults
 MYARCHIVE=""
 MYFILES=""
+OUTFILE="."
 
 while test $# -gt 0; do
   case $1 in
@@ -13,7 +14,11 @@ while test $# -gt 0; do
       shift
     ;;
     *-file|*-files)
-      MYFILES="$MYFILES ${2##*/}"
+      MYFILES="$MYFILES ${2}"
+      shift
+    ;;
+    *-outfilename)
+      OUTFILE="${2}"
       shift
     ;;
     *-outdir)
@@ -60,6 +65,9 @@ if [ -e "$existing_archive" ]; then
     echo "ERROR: unknown archive format $existing_archive"
     exit 1
   fi
+  for i in $MYFILES; do 
+    mv "$i" "$OUTFILE"
+  done
 else
   echo "ERROR: archive not found: $existing_archive"
   exit 1
