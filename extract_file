@@ -39,7 +39,7 @@ if [ -z "$MYARCHIVE" ]; then
   exit 1
 fi
 if [ -z "$MYFILES" ]; then
-  echo "ERROR: no checkout URL is given via --url parameter!"
+  echo "ERROR: no checkout URL is given via --file parameter!"
   exit 1
 fi
 if [ -z "$MYOUTDIR" ]; then
