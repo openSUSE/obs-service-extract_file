@@ -47,9 +47,9 @@ if [ -z "$MYOUTDIR" ]; then
   exit 1
 fi
 
+existing_archive="$PWD/$(echo $MYARCHIVE)"
 cd "$MYOUTDIR"
 
-existing_archive=$(echo $MYARCHIVE)
 if [ -e "$existing_archive" ]; then
   if [ "${existing_archive%.tar.gz}" != "$existing_archive" ]; then
     tar xfz "$existing_archive" --wildcards $MYFILES || exit 1
