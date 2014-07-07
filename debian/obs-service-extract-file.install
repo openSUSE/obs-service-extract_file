@@ -1,0 +1,2 @@
+extract_file         /usr/lib/obs/service/
+extract_file.service /usr/lib/obs/service/

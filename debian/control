@@ -1,0 +1,14 @@
+Source: obs-service-extract-file
+Section: devel
+Priority: extra
+Maintainer: Daniel Gollub <dgollub@brocade.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Homepage: https://build.opensuse.org/package/show/openSUSE:Tools/obs-service-extract_file
+
+Package: obs-service-extract-file
+Architecture: all
+Depends: ${misc:Depends}, tar, bzip2, gzip, xz-utils, unzip
+Description: An OBS source service to extract a file from an archive
+ This is a source service for openSUSE Build Service.
+ It supports to extract a file from an archive, for example a spec file from a tar.
