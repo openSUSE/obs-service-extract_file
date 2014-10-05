@@ -6,11 +6,11 @@
     <required/>
   </parameter>
   <parameter name="files">
-    <description>Files to extract. You may use this parameter multiple times</description>
+    <description>Files to extract. You may use this parameter multiple times.</description>
     <required/>
   </parameter>
   <parameter name="outfilename">
-    <description>Rename file into outfilename</description>
+    <description>Rename file into outfilename. If the files parameter is used multiple times, this must be a directory to move the files into.</description>
   </parameter>
 </service>
 
