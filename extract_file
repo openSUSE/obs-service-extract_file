@@ -73,4 +73,15 @@ else
   exit 1
 fi
 
+# Clean up hierarchy of empty directories - the only files extracted
+# within the unpacked archive should already have been moved to
+# $OUTFILE.  This is necessary to prevent empty directories being
+# transferred back into the checked-out package's working directory,
+# which could cause subsequent "osc service disabledrun" invocations
+# to fail.
+#
+# This approach uses rmdir which should be safer than an rm -rf.  The
+# tac is necessary to ensure we remove the deepest directories first.
+find -type d -printf '%P\n' | tac | xargs -r rmdir
+
 exit 0
