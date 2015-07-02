@@ -47,7 +47,12 @@ if [ -z "$MYOUTDIR" ]; then
   exit 1
 fi
 
-existing_archive="$PWD/$(echo $MYARCHIVE)"
+# If $MYARCHIVE is a glob, there could be multiple tarballs matching it,
+# in which case take the most recent one.
+existing_archive="$PWD/$(ls -t $MYARCHIVE | head -n1)"
+echo "Extracting from $existing_archive:"
+echo "  $MYFILES"
+
 cd "$MYOUTDIR"
 
 if [ -e "$existing_archive" ]; then
