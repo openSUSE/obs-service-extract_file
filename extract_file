@@ -50,6 +50,12 @@ fi
 # If $MYARCHIVE is a glob, there could be multiple tarballs matching it,
 # in which case take the most recent one.
 existing_archive="$PWD/$(ls -t $MYARCHIVE | head -n1)"
+
+if [[ $existing_archive == "$PWD/" ]];then
+  echo "No matching archive found"
+  exit 1
+fi
+
 echo "Extracting from $existing_archive:"
 echo "  $MYFILES"
 
@@ -57,15 +63,15 @@ cd "$MYOUTDIR"
 
 if [ -e "$existing_archive" ]; then
   if [ "${existing_archive%.tar.gz}" != "$existing_archive" ]; then
-    tar xfz "$existing_archive" --wildcards $MYFILES || exit 1
+    tar xfz "$existing_archive" --wildcards -- $MYFILES || exit 1
   elif [ "${existing_archive%.tar.bz2}" != "$existing_archive" ]; then
-    tar xfj "$existing_archive" --wildcards $MYFILES || exit 1
+    tar xfj "$existing_archive" --wildcards -- $MYFILES || exit 1
   elif [ "${existing_archive%.tar.xz}" != "$existing_archive" ]; then
-    tar xfJ "$existing_archive" --wildcards $MYFILES || exit 1
+    tar xfJ "$existing_archive" --wildcards -- $MYFILES || exit 1
   elif [ "${existing_archive%.tar}" != "$existing_archive" ]; then
-    tar xf "$existing_archive" --wildcards $MYFILES || exit 1
+    tar xf "$existing_archive" --wildcards -- $MYFILES || exit 1
   elif [ "${existing_archive%.zip}" != "$existing_archive" ]; then
-    unzip "$existing_archive" $MYFILES || exit 1
+    unzip -- "$existing_archive" $MYFILES || exit 1
   else
     echo "ERROR: unknown archive format $existing_archive"
     exit 1
