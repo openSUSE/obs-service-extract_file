@@ -75,7 +75,15 @@ elif [ "${existing_archive%.tar.xz}" != "$existing_archive" ]; then
 elif [ "${existing_archive%.tar}" != "$existing_archive" ]; then
   tar xf "$existing_archive" --wildcards -- $MYFILES || exit 1
 elif [ "${existing_archive%.zip}" != "$existing_archive" ]; then
-  unzip -- "$existing_archive" $MYFILES || exit 1
+
+  for f in $MYFILES; do 
+    if [ "${f#-}" != "$f" ]; then 
+      echo "illegal --file option: $f" 
+      exit 1 
+    fi 
+  done
+  unzip "$existing_archive" $MYFILES || exit 1
+
 else
   echo "ERROR: unknown archive format $existing_archive"
   exit 1
