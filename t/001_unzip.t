@@ -2,9 +2,9 @@
 #
 #
 
-use strict; 
+use strict;
 use warnings;
-use Test::More tests => 3;
+use Test::More tests => 4;
 use Cwd;
 use Data::Dumper;
 
@@ -38,16 +38,15 @@ for my $i (qw/file.3 file.4/) {
 my $cmd = "$FindBin::Bin/../extract_file --archive test.zip --files '--illegal-option'  --outdir $tmp_dir";
 
 my @out = `$cmd`;
+like(shift(@out), qr/Extracting from .*test.zip:/);
 my $VAR1 = [
-          'Extracting from /home/fschreiner/gh/obs-service-extract_file/t/tmp/test.zip:
-',
           '   --illegal-option
 ',
           'illegal --file option: --illegal-option
 '
         ];
 
-is_deeply($VAR1,\@out,"Checking with illegal option");
+is_deeply(\@out,$VAR1,"Checking with illegal option");
 
 clean_dir($tmp_dir);
 

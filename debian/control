@@ -2,7 +2,7 @@ Source: obs-service-extract-file
 Section: devel
 Priority: extra
 Maintainer: Daniel Gollub <dgollub@brocade.com>
-Build-Depends: debhelper (>= 8.0.0)
+Build-Depends: debhelper (>= 8.0.0), tar, zip, unzip
 Standards-Version: 3.9.3
 Homepage: https://build.opensuse.org/package/show/openSUSE:Tools/obs-service-extract_file
 
