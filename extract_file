@@ -84,6 +84,8 @@ elif [ "${existing_archive%.zip}" != "$existing_archive" ]; then
   done
   unzip "$existing_archive" $MYFILES || exit 1
 
+elif [ "${existing_archive%.obscpio}" != "$existing_archive" ]; then
+  cpio --quiet --extract --preserve-modification-time --make-directories -- $MYFILES < "$existing_archive"
 else
   echo "ERROR: unknown archive format $existing_archive"
   exit 1
